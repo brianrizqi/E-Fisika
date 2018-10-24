@@ -2,6 +2,7 @@ package com.blue.miqdad.e_fisika;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +13,17 @@ import com.blue.miqdad.e_fisika.Models.Book;
 
 import java.util.ArrayList;
 
+
 public class SplashActivity extends AppCompatActivity {
 
     private static final String TAG = SplashActivity.class.getSimpleName();
-    public static final String[] names = {"Buku satu", "Buku dua"};
-    public static final long[] id_raws = {R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison};
+    public static final String[] names = {"Buku satu", "Buku dua", "Buku satu", "Buku dua", "Buku satu", "Buku dua", "Buku satu", "Buku dua", "Buku satu", "Buku dua", "Buku satu", "Buku dua"};
+    public static final long[] id_raws = {R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
+            R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
+            R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
+            R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
+            R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
+            R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             Boolean isFirstRun = preference.getFirstRun();
             Log.d(TAG, "doInBackground: Start");
-            if(!isFirstRun){
+            if(isFirstRun){
                 ArrayList<Book> books = preLoad();
                 helper.open();
 

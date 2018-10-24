@@ -13,6 +13,7 @@ import com.blue.miqdad.e_fisika.DB.BookHelper;
 import com.blue.miqdad.e_fisika.Models.Book;
 import com.blue.miqdad.e_fisika.Models.ItemClickSupport;
 import com.folioreader.Config;
+import com.folioreader.Constants;
 import com.folioreader.FolioReader;
 
 import java.util.ArrayList;
@@ -45,13 +46,11 @@ public class MainActivity extends AppCompatActivity {
         listBookAdapter.setBookArrayList(bookArrayList);
         rvBooks.setAdapter(listBookAdapter);
 
+
         ItemClickSupport.addTo(rvBooks).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 FolioReader folioReader = FolioReader.getInstance(getApplicationContext());
-                Config config = new Config();
-                config.setShowTts(false);
-                folioReader.setConfig(config, true);
                 folioReader.openBook((int) bookArrayList.get(position).getRaw_id());
             }
         });
