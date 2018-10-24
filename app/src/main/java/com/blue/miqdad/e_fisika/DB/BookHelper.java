@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import com.blue.miqdad.e_fisika.Models.Book;
 
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import static com.blue.miqdad.e_fisika.DB.DatabaseContract.*;
 
 public class BookHelper {
+
+    private static final String TAG = BookHelper.class.getSimpleName();
     private static String DATABASE_TABLE = DatabaseContract.TABLE_BOOK;
     private Context context;
     private DatabaseHelper databaseHelper;
@@ -36,7 +39,8 @@ public class BookHelper {
     public ArrayList<Book> getBooks(){
         ArrayList<Book> list = new ArrayList<Book>();
 
-        Cursor cursor = sqLiteDatabase.query(TABLE_BOOK, null, null, null, null, null, BookColumns._ID + " DESC", null);
+        Cursor cursor = sqLiteDatabase.query(TABLE_BOOK, null, null, null, null, null, BookColumns._ID + " ASC", null);
+        Log.d(TAG, "getBooks: cursor size : " + cursor.getCount());
         cursor.moveToFirst();
         Book book;
         do {
@@ -54,7 +58,7 @@ public class BookHelper {
 
     public long insert(Book book){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BookColumns._ID, book.getId());
+//        contentValues.put(BookColumns._ID, book.getId());
         contentValues.put(BookColumns.NAMA, book.getName());
         contentValues.put(BookColumns.RAW_ID, book.getRaw_id());
         return sqLiteDatabase.insert(DATABASE_TABLE, null, contentValues);
