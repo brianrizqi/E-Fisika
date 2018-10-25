@@ -4,36 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".SplashActivity"
+    android:background="@drawable/bg_splash">
 
     <LinearLayout
+        android:padding="10dp"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_book_color_24dp"/>
+            android:src="@mipmap/e_fisika"/>
 
-        <com.eyalbira.loadingdots.LoadingDots
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:layout_marginTop="70dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.ThreeBounce"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:LoadingDots_auto_play="true"
-
-            app:LoadingDots_dots_color="@color/colorAccent"
-            app:LoadingDots_dots_count="4"
-            app:LoadingDots_dots_size="20dp"
-            app:LoadingDots_dots_space="4dp"
-
-            app:LoadingDots_loop_duration="800"
-
-            app:LoadingDots_jump_duration="400"
-            app:LoadingDots_jump_height="8dp"/>
+            app:SpinKit_Color="#fff" />
     </LinearLayout>
 
 </RelativeLayout>

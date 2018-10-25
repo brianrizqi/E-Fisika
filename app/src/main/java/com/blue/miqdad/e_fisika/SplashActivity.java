@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.blue.miqdad.e_fisika.DB.BookHelper;
 import com.blue.miqdad.e_fisika.Models.AppPreference;
 import com.blue.miqdad.e_fisika.Models.Book;
+import com.github.ybq.android.spinkit.style.FadingCircle;
 
 import java.util.ArrayList;
 
@@ -24,12 +26,15 @@ public class SplashActivity extends AppCompatActivity {
             R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
             R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison,
             R.raw.a_room_with_a_view_morrison, R.raw.a_room_with_a_view_morrison};
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        FadingCircle foldingCube = new FadingCircle();
+        progressBar.setIndeterminateDrawable(foldingCube);
         new LoadDatabaseAsyncTask().execute();
     }
 
